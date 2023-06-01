@@ -1,0 +1,43 @@
+<div class="main-content">
+<div class="section-content section-content-p30">
+<div class="container-fluid">
+<div class="container table"  >
+   
+    <table class="table bg-light">
+   
+            <tr>
+                <th> Id</th>
+                <th> Name</th>
+                <th>Description</th>
+                <th>Availability</th>
+                <th>Price</th>
+                <th>Avatar</th>
+            </tr>
+      
+        
+            <tr >
+                <th>{{food.id}}</th>
+                <td>{{food.name}}</td>
+                <td>{{food.description}}</td>
+                <td>{{food.availability}}</td>
+                <td>{{food.price}}</td>
+                <td><img style="width: 200px; height: 200px;"   [src]="food.avatar"/></td>
+               
+              
+            </tr>
+       
+    </table>
+</div>
+</div>
+</div>
+</div>
+
+<footer>
+    <ul>
+      <li><a routerLink="/loginsucces">Page Home</a></li>
+     </ul>
+  </footer>
+  
+
+
+

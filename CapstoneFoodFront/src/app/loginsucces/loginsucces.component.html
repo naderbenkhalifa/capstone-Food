@@ -1,0 +1,47 @@
+
+<div class="main-content">
+<div class="section-content section-content-p30">
+<div class="container-fluid">
+  
+  <div  *ngIf ="newUser.role == 'admin'">
+    <ul class="navbar navbar-light" style="background-color: #0da8e4">
+     
+      <h4><div class="nav-item"><a routerLink="/addFood" class="nav-link"><p style="color:#FFFFFF">Add Food</p> </a></div></h4>
+      <h4><div class="nav-item"><a routerLink="/updateFood" class="nav-link"><p style="color:#FFFFFF">Update Food </p></a></div></h4>
+      <h4><div class="nav-item"><a routerLink="/deleteFood" class="nav-link"><p style="color:#FFFFFF">Delete Food </p></a></div></h4>
+      <h4><div class="nav-item"><a routerLink="/searchFood" class="nav-link"><p style="color:#FFFFFF">Search Food</p></a></div></h4>
+      <h4> <div class="nav-item"><a routerLink="/foodsList" class="nav-link"><p style="color:#FFFFFF">List of foods </p></a></div></h4>
+      <button  class="btn btn-outline-link" (click)="logout()"><p style="color:#FFFFFF">Logout</p></button>
+     
+    </ul>
+  </div>
+  <div  *ngIf ="newUser.role != 'admin'">
+    <ul class="navbar navbar-light" style="background-color: #0da8e4">
+    <h4><div class="nav-item"><a routerLink="/searchFood" class="nav-link"><p style="color:#FFFFFF">Search Food</p></a></div></h4>
+    <h4> <div class="nav-item"><a routerLink="/foodsList" class="nav-link"><p style="color:#FFFFFF">List of foods </p></a></div></h4>
+    <button  class="btn btn-outline-link" (click)="logout()"><p style="color:#FFFFFF">Logout</p></button>
+  </ul>
+  </div>
+  &nbsp;
+ 
+<h2 class="center">Foodbox</h2>
+  &nbsp;
+    <p>Retail food delivery is a courier service in which a restaurant, store, or independent food-delivery company delivers food to a customer. An order is typically made either through a restaurant or grocer's website or mobile app, or through a food ordering company. The delivered items can include entrees, sides, drinks, desserts, or grocery items and are typically delivered in boxes or bags. The delivery person will normally drive a car, but in bigger cities where homes and restaurants are closer together, they may use bikes or motorized scooters.</p>
+    <p>
+      Recently, online food delivery through third-party companies have become a growing industry and caused a "delivery revolution."
+      </p>
+
+    <h3>Meal delivery</h3>
+    <p>A meal delivery service (MDS) is a service that sends customers fresh or frozen, prepared meals delivered to their homes and offices. These services individually package pre-portioned meals to assist with eating a healthy diet. These services cook and prepare meals for customers. Meals may come in small tupperware containers and are often labeled with nutritional information.</p>
+    
+
+    <h3>Associated fees</h3>
+    <p>In addition to paying for the food, customers will often have to pay a delivery fee. The delivery fee will cover the cost of gas or other transportation costs, but usually does not go to the delivery person. For meal delivery, it is common to give the deliverer an optional tip upon paying for the order.</p>
+    <p>Foodbox is a restaurant chain that delivers food items of different cuisines at affordable prices. 
+      It was established in 2014 Bengaluru.</p>
+ 
+
+
+</div>
+</div>
+</div>

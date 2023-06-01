@@ -1,0 +1,41 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+
+                
+                <div *ngFor="let food of foods" class="col-md-3">
+
+                    <div class="product-box">
+
+                       <a routerLink="/foodFound/{{ food.id }}">
+                            <img src="{{ food.avatar}}" class="img-responsive">
+                        </a>
+
+                       <a routerLink="/foodFound/{{ food.id }}">
+                            <h3>{{ food.name }}</h3>
+                        </a>
+                        
+                        <div class="price">{{ food.price| currency:'USD' }}</div>
+                       
+                        <button (click)="addToCart(food)" class="btn btn-primary btn-sm">Add to cart</button>
+                    </div>
+
+                </div>
+
+             
+                <div *ngIf="foods?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    No food found.
+                </div>
+
+            </div>
+           
+
+        </div>
+    </div>
+</div>
+<footer>
+    <ul>
+      <li><a routerLink="/loginsucces">Page Home</a></li>
+     </ul>
+  </footer>

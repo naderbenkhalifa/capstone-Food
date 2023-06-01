@@ -1,0 +1,93 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+      <div class="container-fluid">
+<div class="container justify-content-center">
+    &nbsp;
+      <form class="form-signup" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="center"> <p> Registration</p></div>
+        &nbsp;
+        <div class="form-group">
+          
+          <input type="text" id="inputFullName" formControlName="fullName" class="form-control" placeholder="Full Name" >
+          <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)" class="alert alert-danger mt-1">
+  
+            <div *ngIf="fullName.errors.required">
+            FullName is required
+            </div>
+            <div *ngIf="fullName.errors.minlength">
+            FullName must be at least 4 characters long
+            </div>
+        </div>
+        </div>
+        &nbsp;
+        <div class="form-group">
+          
+          <input type="text" id="inputEmail" formControlName="email"class="form-control" placeholder="Email" >
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-1">
+  
+            <div *ngIf="email.errors.required">
+              Email is required
+            </div>
+      
+            <div *ngIf="email.errors.pattern">
+              Email must be a valid email address format
+            </div>
+          </div>
+         
+      </div>
+        &nbsp;
+        <div class="form-group">
+          
+          <input type="password" id="inputPassword" formControlName="password" class="form-control" placeholder="Password" >
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger mt-1" >
+  
+            <div *ngIf="password.errors.required">
+              Password is required
+            </div>
+      
+            <div *ngIf="password.errors.minlength">
+              Password must be at least 8 characters long
+            </div>
+          </div>
+      
+        </div>
+        &nbsp;
+        <div class="form-group">
+         
+          <input type="text" id="inputAddress" formControlName="address" class="form-control" placeholder="Address" >
+          <div *ngIf="address .invalid && (address .dirty || address.touched)" class="alert alert-danger mt-1" >
+  
+            <div *ngIf="address.errors.required">
+             Address is required
+            </div>
+      
+           
+          </div>
+         
+        </div>
+        &nbsp;
+        <div class="form-group">
+          
+            <input type="text" id="inputContactNumber" formControlName="contactNumber" class="form-control" placeholder="Contact Number" >
+            <div *ngIf="contactNumber.invalid && (contactNumber.dirty || contactNumber.touched)" class="alert alert-danger mt-1" >
+    
+              <div *ngIf="contactNumber.errors.required">
+               Contact Number is required
+              </div>
+        
+              <div *ngIf="contactNumber.errors.minlength">
+              Contact Number must be at least 8 characters long
+              </div>
+            </div>
+        
+          </div>
+          &nbsp;
+        
+  <div style="text-align:center"><button class="btn btn-primary btn-sm" type="submit" >Sign up</button></div>
+        </form>
+    
+    </div>
+</div>
+</div>
+</div>
+

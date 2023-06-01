@@ -1,0 +1,639 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "CapstoneFood API documentation",
+    "version" : "0.0.1-SNAPSHOT",
+    "title" : "CapstoneFood REST API",
+    "contact" : {
+      "name" : "Nader Ben Khalifa",
+      "email" : "nader.benkhalifa78@gmail.com"
+    }
+  },
+  "basePath" : "http://localhost:8020",
+  "tags" : [ {
+    "name" : "foods"
+  }, {
+    "name" : "payments"
+  }, {
+    "name" : "purchaseitems"
+  }, {
+    "name" : "purchases"
+  }, {
+    "name" : "users"
+  } ],
+  "paths" : {
+    "/CapstoneFood/foods/all" : {
+      "get" : {
+        "tags" : [ "foods" ],
+        "summary" : "Renvoi la liste des aliments",
+        "description" : "Cette methode permet de chercher et renvoyer la liste des aliments qui existent dans la BDD",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La liste des aliments / Une liste vide",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Food"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CapstoneFood/foods/create" : {
+      "post" : {
+        "tags" : [ "foods" ],
+        "summary" : "Enregistrer un aliment",
+        "description" : "Cette methode permet d'enregistrer un aliment",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Food"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet aliment crée",
+            "schema" : {
+              "$ref" : "#/definitions/Food"
+            }
+          },
+          "400" : {
+            "description" : "L'objet aliment n'est pas valide"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/foods/delete/{idfood}" : {
+      "delete" : {
+        "tags" : [ "foods" ],
+        "summary" : "Supprimer un aliment",
+        "description" : "Cette methode permet de supprimer un aliment par ID",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "idfood",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "l'aliment a été supprimé"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/foods/findByNameContaining/{name}" : {
+      "get" : {
+        "tags" : [ "foods" ],
+        "summary" : "Renvoi la liste des alimentsByContaining name",
+        "description" : "Cette methode permet de chercher et renvoyer la liste des alimentsByContainingname qui existent dans la BDD",
+        "operationId" : "findByNameContaining",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "La liste des aliments / Une liste vide",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Food"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CapstoneFood/foods/update/{id}" : {
+      "put" : {
+        "tags" : [ "foods" ],
+        "summary" : "modifier un aliment",
+        "description" : "Cette methode permet de modifier un aliment",
+        "operationId" : "updateFood",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Food"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet aliment a été modifié",
+            "schema" : {
+              "$ref" : "#/definitions/Food"
+            }
+          },
+          "400" : {
+            "description" : "L'objet aliment n'est pas valide"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/foods/{id}" : {
+      "get" : {
+        "tags" : [ "foods" ],
+        "summary" : "Rechercher un aliment par ID",
+        "description" : "Cette methode permet de chercher un aliment par son ID",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'aliment a ete trouve dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/Food"
+            }
+          },
+          "404" : {
+            "description" : "Aucun aliment n'existe dans la BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/payment/create" : {
+      "post" : {
+        "tags" : [ "payments" ],
+        "summary" : "Enregistrer un paiement",
+        "description" : "Cette methode permet d'enregistrer un paiement",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Payment"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet paiement crée",
+            "schema" : {
+              "$ref" : "#/definitions/Payment"
+            }
+          },
+          "400" : {
+            "description" : "L'objet paiement n'est pas valide"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/purchaseitems/all" : {
+      "get" : {
+        "tags" : [ "purchaseitems" ],
+        "summary" : "Renvoi la liste des achats",
+        "description" : "Cette methode permet de chercher et renvoyer la liste des achats qui existent dans la BDD",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La liste des achats / Une liste vide",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/PurchaseItem"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CapstoneFood/purchaseitems/create" : {
+      "post" : {
+        "tags" : [ "purchaseitems" ],
+        "summary" : "Enregistrer un achat",
+        "description" : "Cette methode permet d'enregistrer un achat",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/PurchaseItem"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet achat crée",
+            "schema" : {
+              "$ref" : "#/definitions/PurchaseItem"
+            }
+          },
+          "400" : {
+            "description" : "L'objet achat n'est pas valide"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/purchases/all" : {
+      "get" : {
+        "tags" : [ "purchases" ],
+        "summary" : "Renvoi la liste des achats",
+        "description" : "Cette methode permet de chercher et renvoyer la liste des achats qui existent dans la BDD",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La liste des achats / Une liste vide",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Purchase"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CapstoneFood/purchases/create" : {
+      "post" : {
+        "tags" : [ "purchases" ],
+        "summary" : "Enregistrer un achat",
+        "description" : "Cette methode permet d'enregistrer un achat",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Purchase"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet achat crée",
+            "schema" : {
+              "$ref" : "#/definitions/Purchase"
+            }
+          },
+          "400" : {
+            "description" : "L'objet achat n'est pas valide"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/user/find/{email}" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "Chercher la liste des utilisateurs par email",
+        "description" : "Cette methode permet de Chercher la liste des utilisateurs par email",
+        "operationId" : "findByEmail",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "email",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "La liste des utilisateurs /liste vide",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/CapstoneFood/users/all" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "Renvoi la liste des utilisateurs",
+        "description" : "Cette methode permet de chercher et renvoyer la liste des utilisateurs qui existent dans la BDD",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La liste des utilisateurs / Une liste vide",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CapstoneFood/users/create" : {
+      "post" : {
+        "tags" : [ "users" ],
+        "summary" : "Enregistrer un utilisateur",
+        "description" : "Cette methode permet d'enregistrer un utilisateur",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet utilisateur crée",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "400" : {
+            "description" : "L'objet utilisateur n'est pas valide"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/users/delete/{iduser}" : {
+      "delete" : {
+        "tags" : [ "users" ],
+        "summary" : "Supprimer un utilisateur",
+        "description" : "Cette methode permet de supprimer un utilisateur par ID",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "iduser",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "l'utilisateur a été supprimé"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/users/find/{id}" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "Rechercher un utilisateur par ID",
+        "description" : "Cette methode permet de chercher un utilisateur par son ID",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'utilisateur a ete trouve dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "404" : {
+            "description" : "Aucun utilisateur n'existe dans la BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/users/get/{email}/{password}" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "Rechercher un utilisateur par email et password",
+        "description" : "Cette methode permet de chercher un utilisateur par son email et password",
+        "operationId" : "findByEmailAndPassword",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "email",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "password",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'utilisateur a ete trouve dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "404" : {
+            "description" : "Aucun utilisateur n'existe dans la BDD avec l'ID fourni"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/users/login/create" : {
+      "post" : {
+        "tags" : [ "users" ],
+        "summary" : "Enregistrer utilisateurlogin",
+        "description" : "Cette methode permet d'enregistrer un utilisateurlogin",
+        "operationId" : "addUserLogin",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet utilisateurlogin crée",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "400" : {
+            "description" : "L'objet utilisateurlogin n'est pas valide"
+          }
+        }
+      }
+    },
+    "/CapstoneFood/users/{password}" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "Chercher la liste des utilisateurs par password",
+        "description" : "Cette methode permet de Chercher la liste des utilisateurs par password",
+        "operationId" : "findByPassword",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "password",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "La liste des utilisateurs /liste vide",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Food" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "availability" : {
+          "type" : "boolean"
+        },
+        "price" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "avatar" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Payment" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nameOnCard" : {
+          "type" : "string"
+        },
+        "dateOfPayment" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "totalAmount" : {
+          "type" : "number",
+          "format" : "float"
+        },
+        "cardNumber" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "Purchase" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "totalcost" : {
+          "type" : "number",
+          "format" : "float"
+        },
+        "dateOfPurchase" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "totalQuantity" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "shippingAddress" : {
+          "type" : "string"
+        },
+        "purchaseItems" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/PurchaseItem"
+          }
+        },
+        "user" : {
+          "$ref" : "#/definitions/User"
+        }
+      }
+    },
+    "PurchaseItem" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "quantity" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "food" : {
+          "$ref" : "#/definitions/Food"
+        }
+      }
+    },
+    "User" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "fullName" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "address" : {
+          "type" : "string"
+        },
+        "contactNumber" : {
+          "type" : "string"
+        },
+        "role" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

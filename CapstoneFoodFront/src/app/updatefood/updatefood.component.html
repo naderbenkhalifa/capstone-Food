@@ -1,0 +1,68 @@
+
+<div class="main-content">
+<div class="section-content section-content-p30">
+<div class="container-fluid">
+
+  
+  
+  <div class="center"> Details Food</div>
+   
+    
+   
+&nbsp;
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Food ID</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  [(ngModel)]='id'>
+  </div>
+       
+&nbsp;
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Food Name</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  [(ngModel)]='food.name'>
+  </div>
+           
+&nbsp;
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Food Description</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  [(ngModel)]='food.description'>
+  </div>
+               
+&nbsp;
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Food Availability</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  [(ngModel)]='food.availability'>
+  </div>
+                  
+&nbsp;
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Food Price</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  [(ngModel)]='food.price'>
+  </div>
+
+                       
+&nbsp;
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Food Image</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  [(ngModel)]='food.avatar'>
+ </div>
+                            
+                        
+&nbsp;
+&nbsp;
+  
+  <div style="text-align:center"><button class="btn btn-primary btn-sm" type="button" (click)='updateFood(id,food)'>Update Food</button>
+  </div>
+</div>
+
+
+</div>
+</div>
+&nbsp;
+<footer>
+  <ul>
+    <li><a routerLink="/loginsucces">Page Home</a></li>
+   </ul>
+</footer>
+
+
+
